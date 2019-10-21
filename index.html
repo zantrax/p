@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
+	<table width="200" border="1" cellpading="5">
+	<tr><td align="right" valign="top">Nombre</td>
+		<td><input name="nombre" type="text" id="nombre" size="48"/> </td></tr>
+	<tr><td align="right" valign="top">Email</td>
+		<td><input name="email" type="text" id="email" size="48"/> </td></tr>
+	<tr><td align="right" valign="top">Mensaje</td>
+		<td><textarea name="mensaje" type="text" id="mensaje" cols="35" rows="5"> </textarea> </td></tr>
+	<tr align="right">
+	<td valign="top">&nbsp;</td>
+	<td><input type="submit" name="submit" id="submit" value="Enviar Mensaje"/> </td></tr>
+</table>
+</form>
+<?php
+if(isset($_POST['submit'])) {
+$para = "180300@upslp.edu.mx";
+$asunto = "Prueba";
+$nombre = $_POST['nombre'];
+$correo = $_POST['email'];
+$mensaje = $_POST['mensaje'];
+$cuerpo = " Enviado por: $nombre\n E-Mail: $correo\n Mensaje:\n $mensaje\n";
+echo "El mensaje ha sido enviado a $para!";
+mail($para, $asunto, $cuerpo);
+} else {
+echo "Ha ocurrido un error!";
+}
+?>
+
+
+
+</body>
+</html>
